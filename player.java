@@ -22,7 +22,8 @@ public class Player {
                 board.placeMove(row, col, symbol);
                 break;
             } else {
-                System.out.println("This move is not valid");
+                System.out.println("HEEEEEEEEEEEEEEyyy Tompkins i know your tryna test my code for bugs but"
+                +" guess what the're isn't any. now pick another spot. P.S you might wanna put on some glasses");
             }
         }
     }
