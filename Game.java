@@ -1,23 +1,30 @@
-public class TicTacToe {
-    private static char[][] board;
-    private static char currentPlayer;
+public class Game {
+    private Board board;
+    private Player currentPlayer;
 
-    public static void main(String[] args) {
-        board = new char[3][3];
-        currentPlayer = 'X';
-        initializeBoard();
-        printBoard();
+    public Game() {
+        board = new Board();
+        currentPlayer = new Player('X');
+    }
 
+    public void play() {
+        board.printBoard();
         while (true) {
-            playerMove();
-            printBoard();
-            if (isWinner()) {
-                System.out.println("Player " + currentPlayer + " wins!");
+            currentPlayer.makeMove(board);
+            board.printBoard();
+            if (board.isWinner(currentPlayer.getSymbol())) {
+                System.out.println("Player " + currentPlayer.getSymbol() + " wins!");
                 break;
             }
-            if (isBoardFull()) {
+            if (board.isBoardFull()) {
                 System.out.println("The game is a tie!");
                 break;
             }
             switchPlayer();
         }
+    }
+
+    private void switchPlayer() {
+        currentPlayer = (currentPlayer.getSymbol() == 'X') ? new Player('O') : new Player('X');
+    }
+}
